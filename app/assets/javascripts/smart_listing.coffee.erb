@@ -37,7 +37,7 @@ class window.SmartListing
     @popovers = {}
 
     @container.on "ajax:before", "#{SmartListing.config.class_name("item_actions")}, #{SmartListing.config.class_name("pagination_container")}", (e) =>
-      @fadeLoading()
+      #@fadeLoading()
 
     @container.on "ajax:success", (e) =>
       if $(e.target).is("#{SmartListing.config.class_name("item_actions")} #{SmartListing.config.selector("item_action_destroy")}")
@@ -58,7 +58,8 @@ class window.SmartListing
         return false
 
     @container.on "click", SmartListing.config.selector("edit_cancel"), (event) =>
-      editable = $(event.currentTarget).closest(SmartListing.config.class_name("editable"))
+      editable = @container.find("#{SmartListing.config.class_name("editable")}.info") #info CSS class indicates that the item is open for editing
+      #editable = $(event.currentTarget).closest(SmartListing.config.class_name("editable"))
       if(editable.length > 0)
         # Cancel edit
         @cancelEdit(editable)
@@ -385,7 +386,7 @@ $.fn.smart_listing_controls = () ->
     prms = $.extend(smart_listing.params(), prms)
     smart_listing.params(prms)
 
-    smart_listing.fadeLoading()
+    #smart_listing.fadeLoading()
     smart_listing.reload()
 
   $(this).each () ->
