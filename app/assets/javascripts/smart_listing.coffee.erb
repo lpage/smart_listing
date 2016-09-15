@@ -58,7 +58,7 @@ class window.SmartListing
         return false
 
     @container.on "click", SmartListing.config.selector("edit_cancel"), (event) =>
-      editable = @container.find("#{SmartListing.config.class_name("editable")}.#{SmartListing.config.class_name("inline_editing")}")
+      editable = @container.find("#{SmartListing.config.class_name("editable")}#{SmartListing.config.class_name("inline_editing")}")
       if(editable.length > 0)
         # Cancel edit
         @cancelEdit(editable)
